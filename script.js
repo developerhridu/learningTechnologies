@@ -9,4 +9,6 @@ let p = document.createElement("P");
 let t = document.createTextNode("Paragraph text.");
 p.appendChild(t);
 document.body.appendChild(p);
+
 console.log("Hello");
+document.body.style.backgroundColor = "yellow";
