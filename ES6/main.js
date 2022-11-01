@@ -49,7 +49,7 @@ function testingError(x)
         if(isNaN(x)) throw "not a number";
         else
         {
-            throw "Enter Number 1 - 9"
+            throw "Enter Number Between 1 - 9"
         }
     }
     catch(err) {
@@ -59,5 +59,6 @@ function testingError(x)
         console.log("Finally!");
     }
 }
-testingError("sss");
-testingError(8);
+testingError("sss"); // not a number
+testingError(8); // perfect
+testingError(50); // Enter Number Between 1 - 9
