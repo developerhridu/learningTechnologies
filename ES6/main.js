@@ -1,3 +1,4 @@
+
 let sum = 0;
 for (var i = 0; i <= 10; i++) {
   sum += i;
@@ -24,41 +25,46 @@ addArray(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 
 console.log(Array.from("ABCDEFG"));
 
-
 // For In Loop in Object Properties
 let student = { firstName: "MR", lastName: "Hridu", id: 1702153 };
 
-for(let x in student)
-{
-    console.log(student[x]);
+for (let x in student) {
+  console.log(student[x]);
 }
-
 
 // replace()
 let visit = "Visit Cumilla";
 console.log(visit.replace("Cumilla", "Dhaka"));
 
 // Error Handling
-function testingError(x)
-{
-    try {
-        if(x > 0 && x < 10)
-        {
-            throw "Perfect";
-        }
-        if(isNaN(x)) throw "not a number";
-        else
-        {
-            throw "Enter Number Between 1 - 9"
-        }
+function testingError(x) {
+  try {
+    if (x > 0 && x < 10) {
+      throw "Perfect";
     }
-    catch(err) {
-        console.log("input is: ", err);
+    if (isNaN(x)) throw "not a number";
+    else {
+      throw "Enter Number Between 1 - 9";
     }
-    finally {
-        console.log("Finally!");
-    }
+  } catch (err) {
+    console.log("input is: ", err);
+  } finally {
+    console.log("Finally!");
+  }
 }
 testingError("sss"); // not a number
 testingError(8); // perfect
 testingError(50); // Enter Number Between 1 - 9
+
+// this keyword
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  id: 5566,
+  fullName: function () {
+    return this;
+  },
+};
+console.log(person);
+
+

@@ -203,3 +203,14 @@ function array() {
   console.log(person);
 }
 array();
+
+// this keyword
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  id: 5566,
+  fullName: function () {
+    return this;
+  },
+};
+console.log(person);
