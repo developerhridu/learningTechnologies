@@ -1,4 +1,3 @@
-
 let sum = 0;
 for (var i = 0; i <= 10; i++) {
   sum += i;
@@ -67,4 +66,97 @@ const person = {
 };
 console.log(person);
 
+let z = "10.5";
+let y = parseInt(z);
+console.log(y);
+console.log(typeof z);
+console.log(typeof y);
 
+// forEach() method calls a function (a callback function) once for each array element.
+const numbers = [45, 5, 9, 16, 25];
+
+let txt = "";
+let sum3 = 0;
+numbers.forEach(myFunction);
+function myFunction(value, index, array) {
+  sum3 += value;
+}
+console.log(sum3); // 100
+
+// ----> Object
+const person3 = {
+  firstName: "John",
+  lastName: "Doe",
+  age: 50,
+  eyeColor: "blue",
+};
+
+const x = person3;
+x.fullName = x.firstName + " " + x.lastName;
+x.gender = "Male";
+console.log(x.eyeColor);
+console.log(person3.lastName);
+console.log(x.fullName);
+console.log(x.gender);
+// blue
+// Doe
+// John Doe
+// male
+console.log(x);
+
+
+
+
+// Displaying object using Loop
+let txt1 = "";
+for (let x in person3) {
+  txt1 += person3[x] + " ";
+}
+console.log(txt1);
+// John Doe 50 blue John Doe Male
+
+let x1 = JSON.stringify(person3);
+console.log(x1);
+// {"firstName":"John","lastName":"Doe","age":50,"eyeColor":"blue","fullName":"John Doe","gender":"Male"}
+
+
+// ---> Object.defineProperty() 
+// Define object
+const obj = { counter: 0 };
+
+// Define setters and getters
+Object.defineProperty(obj, "reset", {
+  get: function () {
+    this.counter = 0;
+  },
+});
+Object.defineProperty(obj, "increment", {
+  get: function () {
+    this.counter++;
+  },
+});
+Object.defineProperty(obj, "decrement", {
+  get: function () {
+    this.counter--;
+  },
+});
+Object.defineProperty(obj, "add", {
+  set: function (value) {
+    this.counter += value;
+  },
+});
+Object.defineProperty(obj, "subtract", {
+  set: function (value) {
+    this.counter -= value;
+  },
+});
+
+// Play with the counter:
+obj.reset;
+obj.add = 5;
+obj.add = 5;
+obj.subtract = 2;
+obj.increment;
+console.log(obj.counter);
+obj.decrement;
+console.log(obj.counter);
