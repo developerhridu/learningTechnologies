@@ -106,7 +106,6 @@ console.log(x);
 
 
 
-
 // Displaying object using Loop
 let txt1 = "";
 for (let x in person3) {
@@ -160,3 +159,18 @@ obj.increment;
 console.log(obj.counter);
 obj.decrement;
 console.log(obj.counter);
+
+
+
+
+
+// This will return "John Doe":
+// person.fullName.call(person1);
+
+
+
+const myArray = [];
+myArray.push(10);
+myArray.push(20);
+myArray[0] = 100;
+console.log(myArray);
