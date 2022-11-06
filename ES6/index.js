@@ -4,5 +4,9 @@ const message = () => {
   return name + " is " + age + "years old.";
 };
 
-export { message };
+function sumOfTwo(x, y){
+  return x + y;
+}
+
+export { message, sumOfTwo };
 
