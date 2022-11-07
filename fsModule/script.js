@@ -1,0 +1,4 @@
+
+function AlertMe(){
+    alert("Hello")
+}
