@@ -37,7 +37,13 @@ MongoClinet.connect(URL, config, function(err, MyMongoClient) {
         // findAndSort(MyMongoClient);
 
         // Find and update Data by query
-        findAndUpdateData(MyMongoClient);
+        // findAndUpdateData(MyMongoClient);
+
+        // creating new collection
+        // createNewCollection(MyMongoClient);
+
+        // Deleting a Collection
+        deleteCollection(MyMongoClient);
     }
 });  
 
@@ -212,4 +218,28 @@ function findAndUpdateData(MyMongoClient){
             console.log(resultObj);
         }
     });
+}
+
+function createNewCollection(MyMongoClient){
+    let MyDataBase = MyMongoClient.db("School"); 
+    MyDataBase.createCollection("teachers", function(err, resultObj){
+        if(err){
+            console.log("Failed");
+        }
+        else{
+            console.log(resultObj);
+        }
+    })
+}
+
+function deleteCollection(MyMongoClient){
+    let MyDataBase = MyMongoClient.db("School"); 
+    MyDataBase.dropCollection("teachers", function(err, resultObj){
+        if(err){
+            console.log("Failed");
+        }
+        else{
+            console.log(resultObj);
+        }
+    })
 }
