@@ -10,7 +10,7 @@ http.createServer(function (req, res) {
                 res.end();
             }
             else{
-                res.writeHead(200, {'Content-Type': 'text/html'});
+                res.writeHead(200, {'Content-Typef': 'text/html'});
                 res.write("File Doesn't Exists");
                 res.end();
             }
