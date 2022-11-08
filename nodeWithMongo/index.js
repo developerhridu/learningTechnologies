@@ -22,7 +22,22 @@ MongoClinet.connect(URL, config, function(err, MyMongoClient) {
         // findOneData(MyMongoClient);
 
         // Find all data from the cluster
-        findAllData(MyMongoClient);
+        // findAllData(MyMongoClient);
+
+        // Find the Column of the cluster
+        // findAllDataByProjection(MyMongoClient)
+
+        // Find Data by query
+        // findAllDataByQuery(MyMongoClient);
+
+        // Find data by query and set limit
+        // findAllDataByLimit(MyMongoClient);
+
+        // Find and sort the data
+        // findAndSort(MyMongoClient);
+
+        // Find and update Data by query
+        findAndUpdateData(MyMongoClient);
     }
 });  
 
@@ -33,7 +48,7 @@ function InsertData(MyMongoClient){
     let MyCollection = MyDataBase.collection("students"); // Student Collection e connect hocce
    
 
-    let MyData = {name: "Kamrul", ID: 1702151, Department: "ECE", City: "Rangpur"};
+    let MyData = {name: "Bochon", ID: 1701140, Department: "CSE", City: "Cumilla"};
     
     // now inserting MyData to the database
     MyCollection.insertOne(MyData, function(err)
@@ -104,6 +119,92 @@ function findAllData(MyMongoClient){
 
     // to return all find data as array
     MyCollection.find().toArray(function(err, resultObj){
+        if(err){
+            console.log("Data Not Found");
+        }
+        else{
+            console.log(resultObj);
+        }
+    });
+}
+
+function findAllDataByProjection(MyMongoClient){
+    let MyDataBase = MyMongoClient.db("School");  
+    let MyCollection = MyDataBase.collection("students"); 
+
+    let iteamObj = {};
+    let iteamProjection = {projection: {name: ""}} //ID Column ta return korbe
+    MyCollection.find(iteamObj, iteamProjection).toArray(function(err, resultObj){
+        if(err){
+            console.log("Data Not Found");
+        }
+        else{
+            console.log(resultObj);
+        }
+    });
+}
+
+function findAllDataByQuery(MyMongoClient){
+    let MyDataBase = MyMongoClient.db("School");  
+    let MyCollection = MyDataBase.collection("students"); 
+
+    //let query = {City:"Cumilla"}; //City Cumilla sob data return korbe
+    let query = {City: "Cumilla", Department: "ECE"};
+
+    MyCollection.find(query).toArray(function(err, resultObj){
+        if(err){
+            console.log("Data Not Found");
+        }
+        else{
+            console.log(resultObj);
+        }
+    });
+}
+
+function findAllDataByLimit(MyMongoClient){
+    let MyDataBase = MyMongoClient.db("School");  
+    let MyCollection = MyDataBase.collection("students"); 
+
+    //let query = {City:"Cumilla"}; //City Cumilla sob data return korbe
+    let query = {City: "Cumilla", Department: "ECE"};
+
+    MyCollection.find(query).limit(3).toArray(function(err, resultObj){
+        if(err){
+            console.log("Data Not Found");
+        }
+        else{
+            console.log(resultObj);
+        }
+    });
+}
+
+function findAndSort(MyMongoClient){
+    let MyDataBase = MyMongoClient.db("School");  
+    let MyCollection = MyDataBase.collection("students"); 
+
+    //let query = {City:"Cumilla"}; //City Cumilla sob data return korbe
+    let query = {City: "Cumilla"};
+    // let mySort = {ID: -1} // descending
+    let mySort = {ID: 1} // ascending
+
+    MyCollection.find(query).limit(2).sort(mySort).toArray(function(err, resultObj){
+        if(err){
+            console.log("Data Not Found");
+        }
+        else{
+            console.log(resultObj);
+        }
+    });
+}
+
+function findAndUpdateData(MyMongoClient){
+    let MyDataBase = MyMongoClient.db("School");  
+    let MyCollection = MyDataBase.collection("students"); 
+
+    let query = {ID: 1702153};    
+    let updateData = {$set: {name: "MR Hridu", City: "Laksam"}};
+
+    MyCollection.updateOne(query, updateData, function(err, resultObj){
         if(err){
             console.log("Data Not Found");
         }
