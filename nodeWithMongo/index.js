@@ -10,7 +10,7 @@ MongoClinet.connect(URL, config, function(err, MyMongoClient) {
         console.log("Connection Successful");
 
         // to insert
-        // InsertData(MyMongoClient);
+        InsertData(MyMongoClient);
 
         // to delete an iteam
         // deleteData(MyMongoClient)
@@ -43,7 +43,7 @@ MongoClinet.connect(URL, config, function(err, MyMongoClient) {
         // createNewCollection(MyMongoClient);
 
         // Deleting a Collection
-        deleteCollection(MyMongoClient);
+        // deleteCollection(MyMongoClient);
     }
 });  
 
@@ -54,7 +54,7 @@ function InsertData(MyMongoClient){
     let MyCollection = MyDataBase.collection("students"); // Student Collection e connect hocce
    
 
-    let MyData = {name: "Bochon", ID: 1701140, Department: "CSE", City: "Cumilla"};
+    let MyData = {name: "Momin", ID: 1602150, Department: "ECE", City: "Rangpur"};
     
     // now inserting MyData to the database
     MyCollection.insertOne(MyData, function(err)
@@ -243,3 +243,5 @@ function deleteCollection(MyMongoClient){
         }
     })
 }
+
+
