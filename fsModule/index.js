@@ -12,5 +12,11 @@ let server = http.createServer(function(req, res){
     }
 
 });
-server.listen(4040);
-console.log("Server is running");
+server.listen(4040, function(err){
+    if(err){
+        console.log("Failed")
+    }
+    else{
+        console.log("Server is running");
+    }
+});

@@ -10,7 +10,7 @@
 // console.log(rest.get('name')); //Test
 
 var dt = require('./myDateTime');
-// console.log(dt.myDateTime());
+console.log(dt.myDateTime());
 
 let myD = require('./ownModule');
 

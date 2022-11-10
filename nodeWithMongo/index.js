@@ -144,7 +144,7 @@ function findAllDataByProjection(MyMongoClient){
     let MyCollection = MyDataBase.collection("students"); 
 
     let iteamObj = {};
-    let iteamProjection = {projection: {name: ""}} //ID Column ta return korbe
+    let iteamProjection = {projection: {name: ""}} //name Column ta return korbe
     MyCollection.find(iteamObj, iteamProjection).toArray(function(err, resultObj){
         if(err){
             console.log("Data Not Found");
