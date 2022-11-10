@@ -1,5 +1,10 @@
 let MongoClinet = require('mongodb').MongoClient;
-let URL = "mongodb+srv://mrhridu:hridu2277@cluster0.gwpho0l.mongodb.net?retryWrites=true&w=majority";
+
+// MongoDB Hosted on Atlas
+// let URL = "mongodb+srv://mrhridu:hridu2277@cluster0.gwpho0l.mongodb.net?retryWrites=true&w=majority";
+
+// MongoDB Hosted on Local Host
+let URL = "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.6.0";
 
 let config = {useUnifiedTopology: true};
 MongoClinet.connect(URL, config, function(err, MyMongoClient) {
@@ -10,7 +15,7 @@ MongoClinet.connect(URL, config, function(err, MyMongoClient) {
         console.log("Connection Successful");
 
         // to insert
-        InsertData(MyMongoClient);
+        // InsertData(MyMongoClient);
 
         // to delete an iteam
         // deleteData(MyMongoClient)
@@ -22,7 +27,7 @@ MongoClinet.connect(URL, config, function(err, MyMongoClient) {
         // findOneData(MyMongoClient);
 
         // Find all data from the cluster
-        // findAllData(MyMongoClient);
+        findAllData(MyMongoClient);
 
         // Find the Column of the cluster
         // findAllDataByProjection(MyMongoClient)
@@ -34,7 +39,7 @@ MongoClinet.connect(URL, config, function(err, MyMongoClient) {
         // findAllDataByLimit(MyMongoClient);
 
         // Find and sort the data
-        // findAndSort(MyMongoClient);
+        findAndSort(MyMongoClient);
 
         // Find and update Data by query
         // findAndUpdateData(MyMongoClient);
@@ -50,7 +55,7 @@ MongoClinet.connect(URL, config, function(err, MyMongoClient) {
 
 
 function InsertData(MyMongoClient){
-    let MyDataBase = MyMongoClient.db("School");  // School Database e connect hocce 
+    let MyDataBase = MyMongoClient.db("ECE");  // ECE Database e connect hocce 
     let MyCollection = MyDataBase.collection("students"); // Student Collection e connect hocce
    
 
@@ -71,7 +76,7 @@ function InsertData(MyMongoClient){
 }
 
 function deleteData(MyMongoClient){
-    let MyDataBase = MyMongoClient.db("School");  
+    let MyDataBase = MyMongoClient.db("ECE");  
     let MyCollection = MyDataBase.collection("students");  
 
     let data = {ID: 1702151}; // je iteam ta delete korbo se iteam er ekta hits diye dicchi
@@ -87,7 +92,7 @@ function deleteData(MyMongoClient){
 }
 
 function deleteAll(MyMongoClient){
-    let MyDataBase = MyMongoClient.db("School");  
+    let MyDataBase = MyMongoClient.db("ECE");  
     let MyCollection = MyDataBase.collection("students"); 
 
     MyCollection.deleteMany(function(err, resultObj){
@@ -101,7 +106,7 @@ function deleteAll(MyMongoClient){
 }
 
 function findOneData(MyMongoClient){
-    let MyDataBase = MyMongoClient.db("School");  
+    let MyDataBase = MyMongoClient.db("ECE");  
     let MyCollection = MyDataBase.collection("students"); 
     
 
@@ -119,7 +124,7 @@ function findOneData(MyMongoClient){
 }
 
 function findAllData(MyMongoClient){
-    let MyDataBase = MyMongoClient.db("School");  
+    let MyDataBase = MyMongoClient.db("ECE");  
     let MyCollection = MyDataBase.collection("students"); 
 
 
@@ -135,7 +140,7 @@ function findAllData(MyMongoClient){
 }
 
 function findAllDataByProjection(MyMongoClient){
-    let MyDataBase = MyMongoClient.db("School");  
+    let MyDataBase = MyMongoClient.db("ECE");  
     let MyCollection = MyDataBase.collection("students"); 
 
     let iteamObj = {};
@@ -151,7 +156,7 @@ function findAllDataByProjection(MyMongoClient){
 }
 
 function findAllDataByQuery(MyMongoClient){
-    let MyDataBase = MyMongoClient.db("School");  
+    let MyDataBase = MyMongoClient.db("ECE");  
     let MyCollection = MyDataBase.collection("students"); 
 
     //let query = {City:"Cumilla"}; //City Cumilla sob data return korbe
@@ -168,7 +173,7 @@ function findAllDataByQuery(MyMongoClient){
 }
 
 function findAllDataByLimit(MyMongoClient){
-    let MyDataBase = MyMongoClient.db("School");  
+    let MyDataBase = MyMongoClient.db("ECE");  
     let MyCollection = MyDataBase.collection("students"); 
 
     //let query = {City:"Cumilla"}; //City Cumilla sob data return korbe
@@ -185,11 +190,11 @@ function findAllDataByLimit(MyMongoClient){
 }
 
 function findAndSort(MyMongoClient){
-    let MyDataBase = MyMongoClient.db("School");  
+    let MyDataBase = MyMongoClient.db("ECE");  
     let MyCollection = MyDataBase.collection("students"); 
 
     //let query = {City:"Cumilla"}; //City Cumilla sob data return korbe
-    let query = {City: "Cumilla"};
+    let query = {Department: "ECE"};
     // let mySort = {ID: -1} // descending
     let mySort = {ID: 1} // ascending
 
@@ -204,7 +209,7 @@ function findAndSort(MyMongoClient){
 }
 
 function findAndUpdateData(MyMongoClient){
-    let MyDataBase = MyMongoClient.db("School");  
+    let MyDataBase = MyMongoClient.db("ECE");  
     let MyCollection = MyDataBase.collection("students"); 
 
     let query = {ID: 1702153};    
@@ -221,7 +226,7 @@ function findAndUpdateData(MyMongoClient){
 }
 
 function createNewCollection(MyMongoClient){
-    let MyDataBase = MyMongoClient.db("School"); 
+    let MyDataBase = MyMongoClient.db("ECE"); 
     MyDataBase.createCollection("teachers", function(err, resultObj){
         if(err){
             console.log("Failed");
@@ -233,7 +238,7 @@ function createNewCollection(MyMongoClient){
 }
 
 function deleteCollection(MyMongoClient){
-    let MyDataBase = MyMongoClient.db("School"); 
+    let MyDataBase = MyMongoClient.db("ECE"); 
     MyDataBase.dropCollection("teachers", function(err, resultObj){
         if(err){
             console.log("Failed");
