@@ -78,7 +78,8 @@ function findData(myMongoClient){
     let myDataBase = myMongoClient.db("ECE");
     let myCollection = myDataBase.collection("students");
 
-    let myQuery = { City: "Rangpur"};
+    // let myQuery = { City: "Dinajpur"};
+    let myQuery = { name: /^H/};  // name started with H
 
     myCollection.find(myQuery).toArray(function (err, result){
         if(err)
