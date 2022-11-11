@@ -23,3 +23,5 @@ console.log(myD.myDetails().firstName); // Mizanur Rahman
 console.log(myD.myDetails().university); // HSTU
 
 
+myD.helloWorld();
+console.log(myD.add(5,10));

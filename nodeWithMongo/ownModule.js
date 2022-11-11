@@ -9,3 +9,12 @@ exports.myDetails = function(){
     // console.log(hridu);
     return hridu;
 }
+
+exports.helloWorld = function(){
+    console.log("Hello World");
+};
+
+exports.add = function(x, y){
+
+    return x + y;
+}
