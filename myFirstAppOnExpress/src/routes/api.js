@@ -10,5 +10,9 @@ router.post("/hello-post", helloController.helloPost);
 
 // Mongoose
 router.post("/insertTeacher", teacherController.insertTeacher);
+router.get("/readTeacher", teacherController.readTeacher); // read from DB
+router.post("/updateTeacher/:id", teacherController.updateTeacher);  // update by id
+router.post("/deleteTeacher/:id", teacherController.deleteTeacher);  // delete by id
 
- module.exports = router;
+
+module.exports = router;
