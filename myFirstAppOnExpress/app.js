@@ -1,7 +1,11 @@
+// all kinds of configuration are in app.js file
+
+
 const express = require("express");
 const router = require("./src/routes/api");
-
+const mongoose = require("mongoose");
 const app = new express();  // express js er object
+const bodyParser = require("body-parser");
 
 // all security middleware must be configured before routing
 // import
@@ -18,6 +22,7 @@ app.use(helmet());
 app.use(mongoSanitizer());
 app.use(xss());
 app.use(hpp());
+app.use(bodyParser.json());
 
 // request express-rate-limit for limiting request from a single user to prevent DOS Attack
 const limiter = rateLimit({
@@ -27,6 +32,15 @@ const limiter = rateLimit({
     legacyHeaders: false, // Disable the `X-RateLimit-*` headers
 });
 app.use(limiter);
+
+
+// database (MongoDB) is connected after security layer and before routing
+let URL = "mongodb://127.0.0.1:27017/ECE";
+let OPTION = {user: '', pass: ''};
+mongoose.connect(URL, OPTION, (error)=> {
+    console.log("Database Connection Successful");
+    console.log(error);  // if no error then return NULL
+})
 
 
 app.use("/api/v1", router)  // api.js er router ta use korse app object

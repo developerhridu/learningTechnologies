@@ -8,5 +8,5 @@ dotenv.config({path: './config.env'});
 // })
 
 app.listen(5000, function (){
-    console.log("successfully");
+    console.log("Server is running at "+ process.env.RUNNING_PORT);
 })
