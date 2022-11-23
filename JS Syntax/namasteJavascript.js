@@ -17,7 +17,7 @@ console.log(myFunc); // will return full function
 myfunc2(); //Hello from function 2
 // console.log(myFunc2())
 // error - function can not be console.log without keeping it in a variable
-
+console.log(myfunc2);
 function myfunc2() {
   console.log("Hello from function 2");
 }
@@ -31,49 +31,55 @@ function myfunc2() {
 */
 
 /* ---------> Function <------------ */
-console.log("Function 1:");
-var num = 10;
-a(); // 50
-b(); // 100
-console.log(num); // 10
+{
+  console.log("Function 1:");
+  var num = 10;
+  a(); // 50
+  b(); // 100
+  console.log(num); // 10
 
-function a() {
-  var num = 50;
-  console.log(num);
-}
-function b() {
-  var num = 100;
-  console.log(num);
-}
-
-console.log("Function 2: ");
-var num2 = 10;
-a(); // 50
-b(); // 10 - bcz there is no such variable named num2 in the function b(), so Execution Contest will look for the variable in global execution contest
-console.log(num2); // 10
-
-function a() {
-  var num2 = 50;
-  console.log(num2);
-}
-function b() {
-  console.log(num2);
+  function a() {
+    var num = 50;
+    console.log(num);
+  }
+  function b() {
+    var num = 100;
+    console.log(num);
+  }
 }
 
-console.log("Function 3: ");
+{
+  console.log("Function 2: ");
+  var num2 = 10;
+  a(); // 50
+  b(); // 10 - bcz there is no such variable named num2 in the function b(), so Execution Contest will look for the variable in global execution contest
+  console.log(num2); // 10
 
-var num3 = 10;
-a(); // 50
-b(); // 100
-console.log(num3); // 50
-
-function a() {
-  num3 = 50; // Here num3 is updated to 10 to 50
-  console.log(num3);
+  function a() {
+    var num2 = 50;
+    console.log(num2);
+  }
+  function b() {
+    console.log(num2);
+  }
 }
-function b() {
-  var num3 = 100;
-  console.log(num3);
+
+{
+  console.log("Function 3: ");
+
+  var num3 = 10;
+  a(); // 50
+  b(); // 100
+  console.log(num3); // 50
+
+  function a() {
+    num3 = 50; // Here num3 is updated to 10 to 50
+    console.log(num3);
+  }
+  function b() {
+    var num3 = 100;
+    console.log(num3);
+  }
 }
 
 /* Summary:
@@ -100,15 +106,17 @@ Summary
 
 /* ---------> Undefined Vs Not Defined <------------ */
 
-console.log("Undefined Vs Not Defined");
+{
+  console.log("Undefined Vs Not Defined");
 
-console.log(n); // undefined
-var n = 10;
-console.log(n); // 10
+  console.log(n); // undefined
+  var n = 10;
+  console.log(n); // 10
 
-n = "Hello World";
-console.log(n); // Hello World
-// console.log(x); // Not Defined
+  n = "Hello World";
+  console.log(n); // Hello World
+  // console.log(x); // Not Defined
+}
 
 /*
 Undefined: a variable is 'declared', it has its own placeholder but not having the value of itself 'defined' hence 'undefined' and until the variable has assigned a value, the 'undefined' fills that particular placeholder
@@ -122,18 +130,20 @@ and yes "flexibly typed language" sound pretty good instead of "weakly typed lan
 */
 
 /* ---------> Scope and Lexical Environment <------------ */
-console.log("Scope and Lexical Environment");
-function d() {
-  e();
-  function e() {
-    f();
-    function f() {
-      console.log(m);
+{
+  console.log("Scope and Lexical Environment");
+  function d() {
+    e();
+    function e() {
+      f();
+      function f() {
+        console.log(m);
+      }
     }
   }
+  var m = 10;
+  d(); // 10
 }
-var m = 10;
-d(); // 10
 /*
 Scope: where you can access the value of our function in our code
 
@@ -214,18 +224,20 @@ as 'var' declaration goes to 'Global environment' and sets in Memory context, it
 
 /* ---------> Closure <------------ */
 
-function zz() {
-  var b = 900;
-  function x() {
-    var a = 7;
-    function y() {
-      console.log(a, b); // 7, 900
+{
+  function zz() {
+    var b = 900;
+    function x() {
+      var a = 7;
+      function y() {
+        console.log(a, b); // 7, 900
+      }
+      y();
     }
-    y();
+    x();
   }
-  x();
+  zz();
 }
-zz();
 
 /*
 Closure :Function bundled with its lexical environment is known as a closure. Whenever function is returned, even if its vanished in execution context but still it remembers the reference it was pointing to. Its not just that function alone it returns but the entire closure and that's where it becomes interesting !
@@ -315,8 +327,8 @@ Namaste JavaScript
     console.log(xyz);
   };
   a();
-  b();
-  xyz();
+  //   b();
+  //   xyz();
   // Anonymous Function
   // function () {
   // }
