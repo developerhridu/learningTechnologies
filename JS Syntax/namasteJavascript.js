@@ -348,7 +348,6 @@ Namaste JavaScript
     console.log("y"); // y() is not call here but somewhere else
   });
 
-
   // important interview question - count how many time a button is clicked
   function clickCounter() {
     let counter = 0;
@@ -368,10 +367,7 @@ Namaste JavaScript
 4. Event listeners consume a lot of memory which can potentially slow down the website therefore it is good practice to remove if it is not used.
 */
 
-
- 
 /* ---------> Asynchronous JavaScript & EVENT LOOP <------------ */
-
 
 /*
 1. Browser has superpowers that are lent to JS engine to execute some tasks, these superpowers include web API's such as console, location, DOM API, setTimeout, fetch, local storage.
@@ -402,7 +398,6 @@ Namaste JavaScript
 
 /* ---------> Higher-Order Functions <------------ */
 {
-
 }
 
 /*
@@ -411,12 +406,108 @@ First-class functions are JavaScript functions that can behave like variables. T
 Higher-order functions are functions that return a function or take in a function as an argument.
 */
 {
-  function x(){ 
+  function x() {
     console.log("Hello From X");
   }
 
-  function y(x){  // y is higher order function
+  function y(x) {
+    // y is higher order function
     x();
   }
   y(x);
+
+  const radius = [3, 1, 2, 4];
+  const area = function (radius) {
+    return Math.PI * radius * radius;
+  };
+  const cicumference = function (radius) {
+    return 2 * Math.PI * radius;
+  };
+  const diameter = function (radius) {
+    return 2 * radius;
+  };
+  const calculate = function (radius, logic) {
+    const output = [];
+    for (let i = 0; i < radius.length; i++) {
+      output.push(logic(radius[i]));
+    }
+    return output;
+  };
+  console.log(calculate(radius, area));
+  console.log(calculate(radius, cicumference));
+  console.log(calculate(radius, diameter));
 }
+
+/* ---------> Map, filter and reduce  <------------ */
+{
+  const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+  function double(x) {
+    return 2 * x;
+  }
+
+  function binary(x) {
+    return x.toString(2); // return binary number of arr elements
+  }
+  console.log(arr.map(double));
+  console.log(arr.map(binary));
+
+  // filter odd values
+  const isOdd = (x) => {
+    return x % 2;
+  };
+  console.log(arr.filter(isOdd));
+
+  // fiter even values
+  const isEven = (x) => {
+    return x % 2 === 0;
+  };
+  console.log(arr.filter(isEven));
+
+  // fiter values greater than 6
+  const greaterThan6 = (x) =>  x > 6; // valid function
+  console.log(arr.filter(greaterThan6));
+
+
+  // reduce 
+  // syntax : array.reduce(function(total, currentValue, currentIndex, arr), initialValue)
+  const findMax = arr.reduce(function(max, curr){
+    if(curr > max){
+      max = curr;
+    }
+    return max
+  }, 0);
+  console.log(findMax);
+
+  // find sum of the array using reduce function
+  function findSum(acc, curr){
+    acc = acc + curr;
+    return acc;
+  }
+  console.log(arr.reduce(findSum, 0));
+
+
+  // map function
+  const users = [
+    { firstName: "akshay", lastName: "saini", age: 26},
+    { firstName: "donald", lastName: "trump", age: 75},
+    { firstName: "elon", lastName: "musk", age: 50 },
+    { firstName: "deepika", lastName: "padukone", age: 26},
+    ];
+    
+
+    // get full name of the users
+    const output = users.map((x) => x.firstName + " " + x.lastName);
+    console.log(output);
+
+    const output2 = users.map((x) => x.age)
+    console.log(output2);
+
+}
+
+/*
+1. map method is used when we want transformation of whole array.
+2. filter is used when we want to filter the arrar to obtain required value.
+3. reduce is used when we want to reduce the array to single value eg (max, min, avg, sum, difference etc).
+4. reduce passes two arguments one function(which includes accumulator and initial value as argument itself) and another initial value of accumulator.
+*/
