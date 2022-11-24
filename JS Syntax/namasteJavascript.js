@@ -333,3 +333,53 @@ Namaste JavaScript
   // function () {
   // }
 }
+
+/* ---------> Callback <------------ */
+
+{
+  setTimeout(function () {
+    console.log("Timmer");
+  }, 5000)
+  function x(y) {
+    console.log("x");
+    y(); // y() is called
+  }
+  x(function y() {
+    console.log("y"); // y() is not call here but somewhere else
+  });
+
+
+  // important interview question - count how many time a button is clicked
+  function clickCounter() {
+    let counter = 0;
+    document
+      .getElementById("countClick")
+      .addEventListener("click", function () {
+        console.log("Button Clicked for ", ++counter, "Times");
+      });
+  }
+  // clickCounter();
+}
+
+/*
+1. Function that is passed on as argument to another function is called callback function.
+2. setTimeout helps turn JS which is singlethreaded and synchronous into asynchronous.
+3. Event listeners can also invoke closures with scope.
+4. Event listeners consume a lot of memory which can potentially slow down the website therefore it is good practice to remove if it is not used.
+*/
+
+
+
+/* ---------> Asynchronous JavaScript & EVENT LOOP <------------ */
+{
+
+}
+
+/*
+1. Browser has superpowers that are lent to JS engine to execute some tasks, these superpowers include web API's such as console, location, DOM API, setTimeout, fetch, local storage.
+2. Callback functions and event handers are first stored in Web API environment and then transferred to callback queue.
+3. Promises and mutation observer are stored in API environment and then transferred to microtask queue.
+4. Event loop continuously observes call stack and when it is empty it transfers task to call stack.
+5. Micro task is given priority over callback tasks.
+6. Too many micro tasks generated can cause Starvation (nit giving time to callback tasks to execute).
+*/
