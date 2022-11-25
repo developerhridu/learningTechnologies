@@ -1,15 +1,16 @@
 let MongoClinet = require('mongodb').MongoClient;
 
 // MongoDB Hosted on Atlas
-// let URL = "mongodb+srv://mrhridu:hridu2277@cluster0.gwpho0l.mongodb.net?retryWrites=true&w=majority";
+  let URL = "mongodb+srv://mongodb+srv://mrhridu:uL3h7T*$g%LYwkdC@cluster0.gwpho0l.mongodb.net/?retryWrites=true&w=majority";
 
 // MongoDB Hosted on Local Host
-let URL = "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.6.0";
+//let URL = "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.6.0";
 
 let config = {useUnifiedTopology: true};
 MongoClinet.connect(URL, config, function(err, MyMongoClient) {
     if(err){
         console.log("Connection Failed");
+        console.log(err);
     }
     else{
         console.log("Connection Successful");
@@ -55,7 +56,7 @@ MongoClinet.connect(URL, config, function(err, MyMongoClient) {
 
 
 function InsertData(MyMongoClient){
-    let MyDataBase = MyMongoClient.db("ECE");  // ECE Database e connect hocce 
+    let MyDataBase = MyMongoClient.db("School");  // ECE Database e connect hocce
     let MyCollection = MyDataBase.collection("students"); // Student Collection e connect hocce
    
 

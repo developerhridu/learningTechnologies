@@ -50,35 +50,35 @@ function myfunc2() {
 
 {
   console.log("Function 2: ");
-  var num2 = 10;
+  var num = 10;
   a(); // 50
   b(); // 10 - bcz there is no such variable named num2 in the function b(), so Execution Contest will look for the variable in global execution contest
-  console.log(num2); // 10
+  console.log(num); // 10
 
   function a() {
     var num2 = 50;
-    console.log(num2);
+    console.log(num);
   }
   function b() {
-    console.log(num2);
+    console.log(num);
   }
 }
 
 {
   console.log("Function 3: ");
 
-  var num3 = 10;
+  var num = 10;
   a(); // 50
   b(); // 100
-  console.log(num3); // 50
+  console.log(num); // 50
 
   function a() {
-    num3 = 50; // Here num3 is updated to 10 to 50
-    console.log(num3);
+    num = 50; // Here num is updated to 10 to 50
+    console.log(num);
   }
   function b() {
-    var num3 = 100;
-    console.log(num3);
+    var num = 100;
+    console.log(num);
   }
 }
 
@@ -124,7 +124,7 @@ and 'undefined' is itself a datatype
 (really sorry for referencing with c++ concepts)
 
 Not Defined: This case comes in error where js engine neither find that particular variable nor its placeholder
- and cannot find the variable in 1st phase of context (Memory allocation context)
+and cannot find the variable in 1st phase of context (Memory allocation context)
 
 and yes "flexibly typed language" sound pretty good instead of "weakly typed language"
 */
@@ -160,7 +160,6 @@ the Clojure concept starts here
 /* ---------> Let & Const - Temporal Dead Zone <------------ */
 
 /*
-Things learned:
 1. let and const are hoisted but its memory is allocated at other place than window which cannot be accessed before initialisation.
 2. Temporal Dead Zone exists until variable is declared and assigned a value.
 3. window.variable OR this.variable will not give value of variable defined using let or const.
@@ -511,3 +510,6 @@ Higher-order functions are functions that return a function or take in a functio
 3. reduce is used when we want to reduce the array to single value eg (max, min, avg, sum, difference etc).
 4. reduce passes two arguments one function(which includes accumulator and initial value as argument itself) and another initial value of accumulator.
 */
+
+
+console.log(this == global);
