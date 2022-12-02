@@ -54,8 +54,8 @@ app.get("/India", function (req, res) {
 
 // response download
 app.get("/myDownload", function (req, res) {
-    // res.send("Hello Want to download");
-    res.download("/IMG_4.jpg");
+    res.send("Hello Want to download");
+    res.download("./IMG_4.jpg");
     res.end();
 });
 
