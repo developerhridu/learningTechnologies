@@ -1,12 +1,12 @@
-import React from 'react';
+import {useState} from 'react';
 
-const HomeBanner = (props) => {
+const HomeBanner = () => {
+
+    const [color, setColor] = useState("blue");
     return (
         <div>
 
-            {/* passing props from homepage*/}
-            <h1>{props.title}</h1>
-            <h1>{props.subtitle}</h1>
+            <h1>This is Blue</h1>
 
         </div>
     );
