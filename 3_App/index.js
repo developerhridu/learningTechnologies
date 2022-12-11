@@ -89,9 +89,6 @@ app.post('/appjson', function(req,res){
     res.send("name: "+name + ", "+ "city: "+ city );
 })
 
-
-
-
 app.listen(9000,function(req,res){
     console.log('Server started to listen at 9000');
 })
