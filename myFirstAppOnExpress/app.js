@@ -38,10 +38,16 @@ app.use(limiter);
 let URL = "mongodb://127.0.0.1:27017/ECE";
 let OPTION = {user: '', pass: ''};
 mongoose.connect(URL, OPTION, (error)=> {
+    if(error){
+        console.log(error);
+    }
     console.log("Database Connection Successful");
-    console.log(error);  // if no error then return NULL
+
 })
 
+// app.get("/", function (req, res ) {
+//     res.send("Hello Express Js!");
+// });
 
 app.use("/api/v1", router)  // api.js er router ta use korse app object
 

@@ -1,5 +1,6 @@
 const teachersModel = require('../models/teachersModel');
 
+//C = Create
 exports.insertTeacher = (req,res)=>{
     let reqBody= req.body;
     teachersModel.create(reqBody,(err,data)=>{
