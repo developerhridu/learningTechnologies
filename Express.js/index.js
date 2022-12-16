@@ -51,6 +51,19 @@ app.get("/India", function (req, res) {
     res.end();
 });
 
+app.get("/Pakistan", function (req, res) {
+    res.send("Hello Pakistan");
+    res.end();
+});
+
+
+app.get("/argentina", function (req, res) {
+    res.send("Hello Messi");
+    res.end();
+});
+
+
+
 
 // response download
 app.get("/myDownload", function (req, res) {

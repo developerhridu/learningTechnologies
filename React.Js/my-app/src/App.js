@@ -3,12 +3,16 @@
 
 import React from 'react';
 import HomePage from "./pages/HomePage";
+import HomeBanner from "./components/home/HomeBanner";
+
+cons
 
 const App = () => {
   return (
       <div>
-        <HomePage/>
-        <h1>Testing</h1>
+        {/*<HomePage/>*/}
+        {/*  <HomeBanner/>*/}
+        {/*<h1>Testing</h1>*/}
         
       </div>
   );
